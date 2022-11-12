@@ -1,7 +1,7 @@
 const {Router}= require("express")
 const { BlogModel } = require("../models/blog.model")
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const blogRoutes= Router()
