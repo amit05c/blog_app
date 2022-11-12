@@ -1,7 +1,7 @@
 const {Router}= require("express")
 const { UserModel } = require("../models/user.model")
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const userRoutes= Router()
@@ -35,8 +35,10 @@ userRoutes.post("/login",async(req,res)=>{
     let user= await UserModel.findOne({email})
     let hash= user.password
     bcrypt.compare(password, hash, async function(err, result) {
-        // console.log(result)
-       if(result){
+    
+        if(result){
+        //     console.log(result)
+        //    console.log(user)
 
         var token =  jwt.sign({userId: user._id, name: user.name}, process.env.JWT_SECRET);
         // console.log(token)
