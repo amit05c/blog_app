@@ -17,7 +17,7 @@ userRoutes.post("/signup",(req,res)=>{
     
     bcrypt.hash(password, 6, async function(err, hash) {
         if(err){
-            res.send({"Error":"someting error"})
+            res.status(500).send({"Error":"someting error"})
         }else{
             
         
@@ -40,13 +40,13 @@ userRoutes.post("/login",async(req,res)=>{
 
         var token =  jwt.sign({userId: user._id, name: user.name}, process.env.JWT_SECRET);
         // console.log(token)
-         res.send({
+         res.status(200).send({
             message: "login successful",
             token
          })
 
        }else{
-          res.send({"Error":"invalid credential"})
+          res.status(500).send({"Error":"invalid credential"})
        
        }
     });
