@@ -7,7 +7,7 @@ const {authentication} = require("./middleware/authentication")
 
 var cors = require('cors')
 const app= express()
-
+const PORT=process.env.PORT || 8080
 app.use(cors())
 app.use(express.json())
 app.get("/",(req,res)=>{
@@ -16,7 +16,7 @@ app.get("/",(req,res)=>{
 app.use("/user",userRoutes)
 app.use(authentication)
 app.use("/blog",blogRoutes)
-app.listen(8080, async()=>{
+app.listen(PORT, async()=>{
     try{
       await connection;
       console.log("conndected")
