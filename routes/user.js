@@ -36,7 +36,7 @@ userRoutes.post("/login",async(req,res)=>{
     let hash= user.password
     bcrypt.compare(password, hash, async function(err, result) {
         // console.log(result)
-       if(user && result){
+       if(result){
 
         var token =  jwt.sign({userId: user._id, name: user.name}, process.env.JWT_SECRET);
         // console.log(token)
